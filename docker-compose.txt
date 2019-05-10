@@ -1,0 +1,32 @@
+version: '3.1'
+services:
+  python-app:
+    build: .
+    ports:
+      - "4001:4001"
+      - "6000:6000"
+    volumes:
+      - .:/home
+    depends_on:
+      - db1
+    environment:
+      FLASK_APP: "application"
+      FLASK_ENV: "development"
+      FLASK_DEBUG: 1
+      LC_ALL: "C.UTF-8"
+      LANG: "C.UTF-8"
+    networks:
+      - webnet2
+
+  db1:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "dipesh"
+      POSTGRES_PASSWORD: "dipesh123"
+    networks:
+      - webnet2
+
+networks:
+  webnet2:

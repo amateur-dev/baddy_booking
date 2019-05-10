@@ -1,0 +1,12 @@
+version: '3.1'
+services:
+  python-app:
+    build: .
+    container_name: web_scrapper_app
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/home
+    environment:
+      LC_ALL: "C.UTF-8"
+      LANG: "C.UTF-8"
